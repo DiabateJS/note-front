@@ -5,15 +5,15 @@
   <tr>
     <td>
       <ul>
-        <li>Note 1</li>
-        <li>Note 2</li>
-        <li>Note 3</li>
-        <li>Note 4</li>
+        <li *ngFor="let note of notes" (click)="display(note.id)">{{ note.titre}}</li>
       </ul>
     </td>
     <td>
-        Note 1 - Categorie : Professionnelle - Couleur : Bleu<br>
-        <b>Contenu</b>
+        <div *ngIf="currentNote != null">
+          <b>{{ currentNote.titre }}</b><br>
+          Categorie : {{ currentNote.idCategorie }} <br>
+          {{ currentNote.contenu }}<br>
+      </div>
     </td>
   </tr>
 </table>
