@@ -1,0 +1,30 @@
+.note-side-bar {
+  width: 350px;
+}
+
+.note-side-bar ul {
+  list-style-type: none;
+}
+
+.note-details {
+  width: 750px;
+  padding: 10px;
+}
+
+.note-side-title {
+  height: 25px;
+  border: 1px solid orange;
+  margin-top:25px;
+  padding: 5px;
+}
+
+.note-detail-title {
+  height: 25px;
+  padding: 5px;
+  border: 1px solid orange;
+}
+
+.note-detail-content {
+  border: 1px solid black;
+  padding: 15px;
+}
