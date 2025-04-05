@@ -5,16 +5,53 @@
   <tr>
     <td class="note-side-bar">
       <ul>
-        <li class="note-side-title" >New - Delete</li>
         <li *ngFor="let note of notes" class="note-side-title" (click)="display(note.id)">{{ note.titre}}</li>
+        <li class="note-side-head-box" >
+          <button class="btn btn-green" (click)="displayCreateNoteForm()">Nouveau</button>
+          <button class="btn btn-red" (click)="doDeleteNote()">Supprimer</button>
+        </li>
       </ul>
     </td>
     <td class="note-details">
-        <div *ngIf="currentNote != null">
-          <div class="note-detail-title">{{ currentNote.titre }}</div>
-          <div class="note-detail-content">
-            Categorie : {{ currentNote.idCategorie }} <br>
-            {{ currentNote.contenu }}
+        <div [hidden]="!isDisplayNote">
+          <div *ngIf="currentNote != null">
+            <div class="note-detail-title">{{ currentNote.titre }}</div>
+            <div class="note-detail-content">
+              Categorie : {{ currentNote.idCategorie }} <br>
+              {{ currentNote.contenu }}
+          </div>
+        </div>
+        <div>
+          <table>
+            <tr>
+              <td colspan="2" class="note-detail-title">Nouvelle note</td>
+            </tr>
+            <tr>
+              <td>Categorie</td>
+              <td>
+                <select>
+                  <option *ngFor="let categorie of categories">{{ categorie.libelle }}</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Titre</td>
+              <td><input type="text"></td>
+            </tr>
+            <tr>
+              <td>Contenu</td>
+              <td>
+                <textarea></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <button class="btn btn-green">Créer</button>
+                <button class="btn btn-red">Supprimer</button>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     </td>

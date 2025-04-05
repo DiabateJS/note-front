@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { NoteService } from './note.service';
+import { CategorieService } from './categorie.service';
 import { NotesResponse } from './notes.response';
 import { NoteResponse } from './note.response';
 import { Note } from './note';
+import { Categorie } from './categorie';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +13,15 @@ import { Note } from './note';
 })
 export class AppComponent {
   notes: Note[];
+  categories: Categorie[];
   currentNote: Note;
+  isDisplayNote: boolean = true;
+  isCreateNote: boolean = false;
 
 
-  constructor(private noteService: NoteService){
+  constructor(private noteService: NoteService,
+              private categorieService: CategorieService
+  ){
       this.noteService.getNotes().subscribe((notesResponse: NotesResponse) => {
         console.log(notesResponse);
         if (!notesResponse.error){
@@ -22,9 +29,15 @@ export class AppComponent {
           console.log(this.notes);
         }
       });
+      this.categorieService.getCategories().subscribe(categories => {
+        this.categories = categories;
+        console.log(categories);
+      });
   }
 
   display(id: number){
+    this.isDisplayNote = true;
+    this.isCreateNote = false;
     console.log("id = "+id);
     this.noteService.getNoteById(id).subscribe((noteResponse: NoteResponse) => {
       console.log(noteResponse);
@@ -33,6 +46,14 @@ export class AppComponent {
         console.log(this.currentNote);
       }
     });
+  }
+
+  displayCreateNoteForm(){
+    this.isCreateNote = true;
+    this.isDisplayNote = false;
+  }
+
+  doDeleteNote(){
   }
 
 }
