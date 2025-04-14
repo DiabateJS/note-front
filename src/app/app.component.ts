@@ -27,6 +27,9 @@ export class AppComponent {
         if (!notesResponse.error){
           this.notes = notesResponse.data;
           console.log(this.notes);
+          if (this.notes.length > 0){
+            this.currentNote = this.notes[0];
+          }
         }
       });
       this.categorieService.getCategories().subscribe(categories => {

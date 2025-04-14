@@ -1,0 +1,22 @@
+<p class="h1">Nouvelle note</p>
+<form>
+  <div class="mb-3">
+    <label for="categorie" class="form-label">Categorie</label>
+    <select id="categorie" class="form-select" aria-label="Categories select">
+      <option *ngFor="let categorie of categories" value="{{ categorie.libelle }}">{{ categorie.libelle }}</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="titre" class="form-label">Titre</label>
+    <input type="text" class="form-control" id="titre" aria-describedby="titreHelp">
+    <div id="titreHelp" class="form-text">Write your note title</div>
+  </div>
+  <div class="mb-3">
+    <div class="form-floating">
+      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+      <label for="floatingTextarea">Describe note</label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="createNote()">Submit</button>
+  <button class="btn btn-danger" (click)="cleanForm()">Supprimer</button>
+</form>
